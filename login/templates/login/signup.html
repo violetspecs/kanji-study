@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>Signup to My Site</title>
+        {% load static %}
+
+        <link rel="stylesheet" type="text/css" href="{% static 'login/style.css' %}">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Login</h1>
+            <div class="login-form">
+                <form action="{% url 'login:signupuser' %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input id="username" name="username" type="text" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input id="password" name="password" type="password" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input id="email" name="email" type="text" />
+                    </div>
+                    <div class="form-group">
+                        <label for="firstname">First name</label>
+                        <input id="firstname" name="firstname" type="text" />
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname">Last name</label>
+                        <input id="lastname" name="lastname" type="text" />
+                    </div>
+                    <div class="form-group">
+                        <button>Sign up</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+    </body>
+</html>

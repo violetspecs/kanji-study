@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>Kanji Quiz</title>
+        {% load static %}
+
+        <link rel="stylesheet" type="text/css" href="{% static 'quiz/style.css' %}">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Results</h1>
+            <div>
+                <h2>Score: {{ total_correct }}/{{ total_answered}}</h2>
+                {% if kanji_list %}
+                    <h2>Wrong answers</h2>
+                    {% for kanji in kanji_list %}
+                        <div class="kanji-results">
+                            <p>{{ kanji.kanji }}</p>
+                            <p>{{ kanji.english }}</p>
+                        </div>
+                        
+                    {% endfor %}
+                {% else %}
+                    <h2>You got all correct!</h2>
+                {% endif %}
+            </div>
+            <form action="{% url 'quiz:answer' %}" method="post">
+                {% csrf_token %}
+                <button>Retry</button>
+            </form>
+            <form action="{% url 'login:logoutuser' %}" method="post">
+                {% csrf_token %}
+                <button>Log out</button>
+            </form>
+        </div>
+        
+    </body>
+    {{ kanji_list_json|json_script:"kanji-data" }}
+    <script>
+        var kanji_list_json = '{{ kanji_list_json }}'
+    </script>
+    <script type="text/javascript" src="{% static 'quiz/result_scripts.js' %}"></script>
+
+</html>
