@@ -4,6 +4,7 @@ from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.urls import reverse
+from quiz.models import Kanji, UserKanji
 
 def index(request):
     return render(request, 'login/index.html')
@@ -30,6 +31,10 @@ def signupuser(request):
     user = User.objects.create_user(username, email, password, last_name=lastname, first_name=firstname)
     user = authenticate(username=username, password=password)
     if user is not None:
+        kanji_list = Kanji.objects.all()
+        for kanji in kanji_list:
+            userkanji = UserKanji(user=user, kanji=kanji, times_correct=0, times_answered=0)
+            userkanji.save()
         return HttpResponseRedirect(reverse('quiz:index'))
     else:
         return HttpResponseRedirect(reverse('login:index'))
