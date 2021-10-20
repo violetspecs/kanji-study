@@ -131,9 +131,9 @@ STATIC_ROOT = os.path.join(BASE_DIR_STATIC, 'staticfiles')
 STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR_STATIC, 'static'),
-)
+#STATICFILES_DIRS = (
+#    os.path.join(BASE_DIR_STATIC, 'static'),
+#)
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
