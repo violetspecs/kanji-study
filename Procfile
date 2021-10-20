@@ -1,1 +1,1 @@
-web: gunicorn kanji-study.wsgi
+web: gunicorn mysite.wsgi
