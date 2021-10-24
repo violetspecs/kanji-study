@@ -75,7 +75,7 @@ function updateDisplay (choices) {
         document.getElementById('option' + (i + 1)).value = choices[i].id;
     }
     document.getElementById('count').innerText = (currentIndex + 1) + " out of " + kanjiListForQuiz.length;
-    document.getElementById('score').innerText = "Score: " + (score + 1) + "/" + kanjiListForQuiz.length;
+    document.getElementById('score').innerText = "Score: " + (score) + "/" + kanjiListForQuiz.length;
 }
 
 // from stackoverflow 
