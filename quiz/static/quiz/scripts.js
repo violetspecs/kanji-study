@@ -1,5 +1,6 @@
 const value = JSON.parse(document.getElementById('kanji-data').textContent);
 const forConvert = "\"" + value.substring(1, value.length - 1) + "\"";
+const quizType = document.getElementById('quizType').textContent
 
 const kanjiList = JSON.parse(value);
 let correctAnswers = [];
@@ -58,6 +59,7 @@ function getQuestion(selectedAnswer) {
         // Send form to server
         document.getElementById('correctAnswers').value = correctAnswers.join(' ');
         document.getElementById('wrongAnswers').value = wrongAnswers.join(' ');
+        document.getElementById('quizChoiceType').value = quizType;
         document.getElementById("answersToSend").submit();
         return;
     }
@@ -71,7 +73,11 @@ function getQuestion(selectedAnswer) {
 function updateDisplay (choices) {
     document.getElementById('kanji').innerText = kanjiListForQuiz[currentIndex].kanji;
     for (var i = 0; i < 4; i++) {
-        document.getElementById('option' + (i + 1)).innerText = choices[i].english;
+        let choice = choices[i].english
+        if (quizType == 'kunyomi') {
+            choice = choices[i].kunyomi
+        }
+        document.getElementById('option' + (i + 1)).innerText = choice;
         document.getElementById('option' + (i + 1)).value = choices[i].id;
     }
     document.getElementById('count').innerText = (currentIndex + 1) + " out of " + kanjiListForQuiz.length;

@@ -17,9 +17,16 @@ def index(request):
 @login_required(login_url='/login/')
 def answer(request):
     user = request.user
+    quiz_type = request.GET.get('quiz')
     userkanji_list = UserKanji.objects.filter(user=user).annotate(correct_percent=Case(When(times_answered=0, then=0),default=(F('times_correct')*100/F('times_answered')*100))).order_by(F('correct_percent').asc())[:20]
-    kanji_list = Kanji.objects.filter(userkanji__in=userkanji_list)
-    return render(request, 'quiz/answer.html', {'kanji_list': kanji_list, 'kanji_list_json': json.dumps(list(kanji_list.values()), cls=DjangoJSONEncoder)})
+
+    if quiz_type == 'kunyomi':
+        kanji_list = Kanji.objects.filter(userkanji__in=userkanji_list).exclude(kunyomi__exact='')
+    else:
+        quiz_type = 'default'
+        kanji_list = Kanji.objects.filter(userkanji__in=userkanji_list)
+    
+    return render(request, 'quiz/answer.html', {'type': quiz_type, 'kanji_list': kanji_list, 'kanji_list_json': json.dumps(list(kanji_list.values()), cls=DjangoJSONEncoder)})
 
 @csrf_exempt
 def register(request):
@@ -50,6 +57,7 @@ def register(request):
 def result(request):
     correct_answers = request.POST['correctAnswers'].split()
     wrong_answers = request.POST['wrongAnswers'].split()
+    quiz_type = request.POST['quizChoiceType']
     print(correct_answers)
     print(wrong_answers)
 
@@ -74,4 +82,8 @@ def result(request):
     total_answered = len(correct_answers) + len(wrong_answers)
     results = Kanji.objects.filter(id__in = wrong_answers)
 
-    return render(request, 'quiz/result.html', {'kanji_list': results, 'kanji_list_json': json.dumps(list(results.values()), cls=DjangoJSONEncoder), 'total_correct': total_correct, 'total_answered': total_answered})
+    isKunyomi = False
+    if quiz_type == 'kunyomi':
+        isKunyomi = True
+    
+    return render(request, 'quiz/result.html', {'isKunyomi': isKunyomi, 'kanji_list': results, 'kanji_list_json': json.dumps(list(results.values()), cls=DjangoJSONEncoder), 'total_correct': total_correct, 'total_answered': total_answered})

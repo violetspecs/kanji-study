@@ -18,6 +18,7 @@
                     {% csrf_token %}
                     <input id="correctAnswers" name="correctAnswers" type="hidden" />
                     <input id="wrongAnswers" name="wrongAnswers" type="hidden" />
+                    <input id="quizChoiceType" name="quizChoiceType" type="hidden" />
                 </form>
             </div>
             <p id="count"></p>
@@ -29,6 +30,7 @@
         </div>
         
     </body>
+    <p id="quizType" style="display:none;">{{ type }}</p>
     {{ kanji_list_json|json_script:"kanji-data" }}
     <script>
         var kanji_list_json = '{{ kanji_list_json }}'

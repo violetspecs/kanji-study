@@ -14,16 +14,30 @@
                     <div class="kanji-results">
                     {% for kanji in kanji_list %}
                         <p class="kanji-char">{{ kanji.kanji }}</p>
+                        {% if isKunyomi %}
+                        <p class="kanji-english">{{ kanji.kunyomi }}</p>
+                        {% else %}
                         <p class="kanji-english">{{ kanji.english }}</p>
+                        {% endif %}
+                        
+                        
                     {% endfor %}
                     </div>
                 {% else %}
                     <h2>You got all correct!</h2>
                 {% endif %}
-            <form action="{% url 'quiz:answer' %}" method="post">
+            {% if isKunyomi %}
+            <form action="{% url 'quiz:answer' %}?quiz=kunyomi" method="post">
                 {% csrf_token %}
                 <button>Retry</button>
             </form>
+            {% else %}
+            <form action="{% url 'quiz:answer' %}?quiz=english" method="post">
+                {% csrf_token %}
+                <button>Retry</button>
+            </form>
+            {% endif %}
+            
             <form action="{% url 'login:logoutuser' %}" method="post">
                 {% csrf_token %}
                 <button>Log out</button>
