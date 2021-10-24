@@ -21,7 +21,7 @@ def answer(request):
     userkanji_list = UserKanji.objects.filter(user=user).annotate(correct_percent=Case(When(times_answered=0, then=0),default=(F('times_correct')*100/F('times_answered')*100))).order_by(F('correct_percent').asc())[:20]
 
     if quiz_type == 'kunyomi':
-        kanji_list = Kanji.objects.filter(userkanji__in=userkanji_list).exclude(kunyomi__exact='')
+        kanji_list = Kanji.objects.filter(userkanji__in=userkanji_list).exclude(kunyomi__exact='くんよみ')
     else:
         quiz_type = 'default'
         kanji_list = Kanji.objects.filter(userkanji__in=userkanji_list)
