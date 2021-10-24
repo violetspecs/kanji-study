@@ -1,13 +1,13 @@
 <html>
     <head>
-        <title>Login to My Site</title>
+        <title>Kanji Quiz</title>
         {% load static %}
 
         <link rel="stylesheet" type="text/css" href="{% static 'login/style.css' %}">
     </head>
     <body>
         <div class="container">
-            <h1>Login</h1>
+            <h1>Kanji Quiz</h1>
             <div class="login-form">
                 <form action="{% url 'login:loginuser' %}" method="post">
                     {% csrf_token %}
