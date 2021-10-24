@@ -22,6 +22,12 @@
 }
 
 .kanji-results {
-    display: flex;
-    align-items:center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    align-items: center;
+}
+
+.kanji-char {
+    font-size: 2em;
 }
