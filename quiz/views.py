@@ -18,13 +18,13 @@ def index(request):
 def answer(request):
     user = request.user
     quiz_type = request.GET.get('quiz')
-    userkanji_list = UserKanji.objects.filter(user=user).annotate(correct_percent=Case(When(times_answered=0, then=0),default=(F('times_correct')*100/F('times_answered')*100))).order_by(F('correct_percent').asc())[:20]
+    userkanji_list = UserKanji.objects.filter(user=user).annotate(correct_percent=Case(When(times_answered=0, then=0),default=(F('times_correct')*100/F('times_answered')*100))).order_by(F('correct_percent').asc())
 
     if quiz_type == 'kunyomi':
-        kanji_list = Kanji.objects.filter(userkanji__in=userkanji_list).exclude(kunyomi__exact='くんよみ')
+        kanji_list = Kanji.objects.filter(userkanji__in=userkanji_list).exclude(kunyomi__exact='くんよみ')[:20]
     else:
         quiz_type = 'default'
-        kanji_list = Kanji.objects.filter(userkanji__in=userkanji_list)
+        kanji_list = Kanji.objects.filter(userkanji__in=userkanji_list)[:20]
     
     return render(request, 'quiz/answer.html', {'type': quiz_type, 'kanji_list': kanji_list, 'kanji_list_json': json.dumps(list(kanji_list.values()), cls=DjangoJSONEncoder)})
 
