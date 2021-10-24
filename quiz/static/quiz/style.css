@@ -26,6 +26,8 @@
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
     align-items: center;
+    justify-items: center;
+    width: 500px;
 }
 
 .kanji-char {

@@ -8,7 +8,6 @@
     <body>
         <div class="container">
             <h1>Results</h1>
-            <div>
                 <h2>Score: {{ total_correct }}/{{ total_answered}}</h2>
                 {% if kanji_list %}
                     <h2>Wrong answers</h2>
@@ -21,7 +20,6 @@
                 {% else %}
                     <h2>You got all correct!</h2>
                 {% endif %}
-            </div>
             <form action="{% url 'quiz:answer' %}" method="post">
                 {% csrf_token %}
                 <button>Retry</button>
