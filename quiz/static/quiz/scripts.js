@@ -63,6 +63,7 @@ function getQuestion(selectedAnswer) {
         document.getElementById('wrongAnswers').value = wrongAnswers.join(' ');
         document.getElementById('quizChoiceType').value = quizType;
         document.getElementById("answersToSend").submit();
+        currentIndex += 1;
         return;
     }
 
