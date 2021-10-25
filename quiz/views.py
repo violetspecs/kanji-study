@@ -23,7 +23,7 @@ def answer(request):
     if quiz_type == 'kunyomi':
         kanji_list = Kanji.objects.filter(userkanji__in=userkanji_list).exclude(kunyomi__exact='くんよみ')[:20]
     elif quiz_type == 'onyomi':
-        kanji_list = Kanji.objects.filter(userkanji__in=userkanji_list).exclude(kunyomi__exact='オンヨミ')[:20]
+        kanji_list = Kanji.objects.filter(userkanji__in=userkanji_list).exclude(onyomi__exact='オンヨミ')[:20]
     else:
         quiz_type = 'default'
         kanji_list = Kanji.objects.filter(userkanji__in=userkanji_list)[:20]
