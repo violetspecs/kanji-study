@@ -37,7 +37,8 @@ function getChoices(index) {
 }
 
 function getQuestion(selectedAnswer) {
-    console.log("get next question");
+    if (currentIndex < kanjiList.length) {
+        console.log("get next question");
     kanjianswer = kanjiList.filter(kanji => {
         if (kanji.id == selectedAnswer) {
             return kanji;
@@ -56,6 +57,7 @@ function getQuestion(selectedAnswer) {
 
     if (currentIndex >= kanjiList.length - 1) {
         console.log("No more questions");
+
         // Send form to server
         document.getElementById('correctAnswers').value = correctAnswers.join(' ');
         document.getElementById('wrongAnswers').value = wrongAnswers.join(' ');
@@ -68,6 +70,7 @@ function getQuestion(selectedAnswer) {
     let choices = getChoices(currentIndex);
 
     updateDisplay(choices);
+    }
 }
 
 function updateDisplay (choices) {
