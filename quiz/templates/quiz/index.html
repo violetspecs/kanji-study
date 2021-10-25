@@ -10,6 +10,7 @@
             <h1>Quiz</h1>
             <a href="{% url 'quiz:answer' %}?quiz=english">English Quiz</a>
             <a href="{% url 'quiz:answer' %}?quiz=kunyomi">Kunyomi Quiz</a>
+            <a href="{% url 'quiz:answer' %}?quiz=onyomi">Onyomi Quiz</a>
             <p>OR</p>
             <form action="{% url 'login:logoutuser' %}" method="post">
                 {% csrf_token %}

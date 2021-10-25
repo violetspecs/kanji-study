@@ -22,6 +22,8 @@ def answer(request):
 
     if quiz_type == 'kunyomi':
         kanji_list = Kanji.objects.filter(userkanji__in=userkanji_list).exclude(kunyomi__exact='くんよみ')[:20]
+    elif quiz_type == 'onyomi':
+        kanji_list = Kanji.objects.filter(userkanji__in=userkanji_list).exclude(kunyomi__exact='オンヨミ')[:20]
     else:
         quiz_type = 'default'
         kanji_list = Kanji.objects.filter(userkanji__in=userkanji_list)[:20]
@@ -86,4 +88,4 @@ def result(request):
     if quiz_type == 'kunyomi':
         isKunyomi = True
     
-    return render(request, 'quiz/result.html', {'isKunyomi': isKunyomi, 'kanji_list': results, 'kanji_list_json': json.dumps(list(results.values()), cls=DjangoJSONEncoder), 'total_correct': total_correct, 'total_answered': total_answered})
+    return render(request, 'quiz/result.html', {'type': quiz_type, 'kanji_list': results, 'kanji_list_json': json.dumps(list(results.values()), cls=DjangoJSONEncoder), 'total_correct': total_correct, 'total_answered': total_answered})

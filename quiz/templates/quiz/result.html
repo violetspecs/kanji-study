@@ -14,18 +14,25 @@
                     <div class="kanji-results">
                     {% for kanji in kanji_list %}
                         <p class="kanji-char">{{ kanji.kanji }}</p>
-                        {% if isKunyomi %}
-                        <p class="kanji-english">{{ kanji.kunyomi }}</p>
+                        {% if type == "kunyomi" %}
+                        <p class="kanji-reading">{{ kanji.kunyomi }}</p>
+                        {% elif type == "onyomi" %}
+                        <p class="kanji-reading">{{ kanji.onyomi }}</p>
                         {% else %}
-                        <p class="kanji-english">{{ kanji.english }}</p>
+                        <p class="kanji-reading">{{ kanji.english }}</p>
                         {% endif %}
                     {% endfor %}
                     </div>
                 {% else %}
                     <h2>You got all correct!</h2>
                 {% endif %}
-            {% if isKunyomi %}
+            {% if type == "kunyomi" %}
             <form action="{% url 'quiz:answer' %}?quiz=kunyomi" method="post">
+                {% csrf_token %}
+                <button>Retry</button>
+            </form>
+            {% elif type == "onyomi" %}
+            <form action="{% url 'quiz:answer' %}?quiz=onyomi" method="post">
                 {% csrf_token %}
                 <button>Retry</button>
             </form>
@@ -35,7 +42,7 @@
                 <button>Retry</button>
             </form>
             {% endif %}
-            
+            <a href="{% url 'quiz:index' %}">Select another quiz</a>
             <form action="{% url 'login:logoutuser' %}" method="post">
                 {% csrf_token %}
                 <button>Log out</button>

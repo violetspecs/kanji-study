@@ -76,6 +76,8 @@ function updateDisplay (choices) {
         let choice = choices[i].english
         if (quizType == 'kunyomi') {
             choice = choices[i].kunyomi
+        } else if (quizType == 'onyomi') {
+            choice = choices[i].onyomi
         }
         document.getElementById('option' + (i + 1)).innerText = choice;
         document.getElementById('option' + (i + 1)).value = choices[i].id;
