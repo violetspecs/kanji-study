@@ -54,7 +54,7 @@ function getQuestion(selectedAnswer) {
         wrongAnswers.push(kanjiListForQuiz[currentIndex].id);
     }
 
-    if (currentIndex == kanjiList.length - 1) {
+    if (currentIndex >= kanjiList.length - 1) {
         console.log("No more questions");
         // Send form to server
         document.getElementById('correctAnswers').value = correctAnswers.join(' ');
