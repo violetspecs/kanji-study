@@ -92,6 +92,7 @@ button {
         margin: 10px;
         font-size: 1.5rem;
         height: 4rem;
+        padding: 0px;
     }
 
     .kanji-display {
