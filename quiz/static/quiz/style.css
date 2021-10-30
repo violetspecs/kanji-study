@@ -8,17 +8,20 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 500px;
+    width: 100%;
 }
 .option-button {
-    font-size: 1.5em;
-    margin: 10px;
+    font-size: 4rem;
+    margin: 10px 0px 10px 0px;
     width: 100%;
-    padding: 10px;
+    padding: 20px;
+    display: block;
+    height: 10rem;
 }
 
 .kanji-display {
-    font-size: 2.5em;
+    font-size: 8rem;
+    margin: 0px;
 }
 
 .kanji-results {
@@ -30,10 +33,67 @@
 }
 
 .kanji-char {
-    font-size: 2em;
+    font-size: 6em;
     justify-self: center;
 }
 
 .kanji-reading {
     justify-self: start;
+}
+
+h1 {
+    font-size: 6rem;
+}
+
+h2 {
+    font-size: 6rem;
+}
+
+a {
+    font-size: 4rem;
+}
+
+p {
+    font-size: 4rem;
+}
+
+button {
+    height: 6rem;
+    font-size: 3rem;
+}
+
+@media (min-width: 1024px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    a {
+        font-size: 1rem;
+    }
+    
+    p {
+        font-size: 1rem;
+    }
+    
+    button {
+        height: 3rem;
+        font-size: 1rem;
+    }
+
+    .option-buttons {
+        width: 500px;
+    }
+
+    .option-button {
+        margin: 10px;
+        font-size: 1.5rem;
+    }
+
+    .kanji-display {
+        font-size: 2.5em;
+    }
+
+    .kanji-char {
+        font-size: 2em;
+    }
 }
