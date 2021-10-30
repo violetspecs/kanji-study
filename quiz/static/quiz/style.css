@@ -1,3 +1,7 @@
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
 .container {
     display: flex;
     align-items: center;
@@ -87,6 +91,7 @@ button {
     .option-button {
         margin: 10px;
         font-size: 1.5rem;
+        height: 4rem;
     }
 
     .kanji-display {
@@ -95,5 +100,9 @@ button {
 
     .kanji-char {
         font-size: 2em;
+    }
+
+    h2 {
+        font-size: 2rem;
     }
 }
