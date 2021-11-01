@@ -15,6 +15,8 @@
             <a href="{% url 'quiz:answer' %}?quiz=kunyomi">Kunyomi</a>
             <a href="{% url 'quiz:answer' %}?quiz=onyomi">Onyomi</a>
             <p>OR</p>
+            <a href="{% url 'quiz:kanjilist' %}">View kanji list</a>
+            <p>OR</p>
             <form action="{% url 'login:logoutuser' %}" method="post">
                 {% csrf_token %}
                 <button>Log out</button>

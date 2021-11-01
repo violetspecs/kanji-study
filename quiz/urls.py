@@ -8,4 +8,5 @@ urlpatterns = [
     path('answer', views.answer, name='answer'),
     path('result', views.result, name='result'),
     path('register', views.register, name='register'),
+    path('kanjilist', views.kanjilist, name='kanjilist')
 ]

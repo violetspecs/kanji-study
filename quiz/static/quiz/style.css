@@ -107,3 +107,22 @@ button {
         font-size: 2rem;
     }
 }
+
+.kanji-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 700px;
+}
+
+.kanji-list-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    align-items: center;
+    width: 100%;
+}
+
+.kanji-list .kanji-list-row:nth-child(2n) {
+    background-color: #AEF6C7;
+}

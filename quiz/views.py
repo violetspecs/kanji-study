@@ -54,7 +54,6 @@ def register(request):
 
     return HttpResponse("Successfully added " + str(len(kanji_list)) + " kanji")
 
-
 @login_required(login_url='/login/')
 def result(request):
     correct_answers = request.POST['correctAnswers'].split()
@@ -99,3 +98,9 @@ def result(request):
     results = Kanji.objects.filter(id__in = wrong_answers)
     
     return render(request, 'quiz/result.html', {'type': quiz_type, 'kanji_list': results, 'kanji_list_json': json.dumps(list(results.values()), cls=DjangoJSONEncoder), 'total_correct': total_correct, 'total_answered': total_answered})
+
+@login_required(login_url='/login/')
+def kanjilist(request):
+    userkanji_list = UserKanji.objects.filter(user=request.user)
+
+    return render(request, 'quiz/kanjilist.html', {'kanji_list': userkanji_list})

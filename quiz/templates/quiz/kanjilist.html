@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>Kanji Quiz</title>
+        {% load static %}
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{% static 'quiz/style.css' %}">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Kanji</h1>
+            <div class="kanji-list">
+                <div class="kanji-list-row">
+                    <div><p>Kanji</p></div>
+                    <p>Meaning</p>
+                    <p>English score</p>
+                    <p>Kunyomi score</p>
+                    <p>Onyomi score</p>
+                </div>
+                {% for kanji in kanji_list %}
+                <div class = "kanji-list-row">
+                    <div><h2>{{ kanji.kanji }}</h2></div>
+                    <div><p>{{ kanji.kanji.english }}</p></div>
+                    <div><p>{{ kanji.times_correct_english }}/{{ kanji.times_answered_english }}</p></div>
+                    <div><p>{{ kanji.times_correct_kunyomi }}/{{ kanji.times_answered_kunyomi }}</p></div>
+                    <div><p>{{ kanji.times_correct_onyomi }}/{{ kanji.times_answered_onyomi }}</p></div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </body>
+</html>
