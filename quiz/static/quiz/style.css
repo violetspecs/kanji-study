@@ -130,3 +130,8 @@ button {
 .kanji-list-row > div {
     padding: 0px 10px 0px 10px;
 }
+
+.kanji-list-kanji {
+    font-size: 2.5rem;
+    text-decoration: none;
+}

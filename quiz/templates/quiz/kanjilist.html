@@ -22,7 +22,7 @@
                 </div>
                 {% for kanji in kanji_list %}
                 <div class = "kanji-list-row">
-                    <div><h2>{{ kanji.kanji }}</h2></div>
+                    <div><a class="kanji-list-kanji" href="https://jisho.org/search/{{ kanji.kanji }}" target="new">{{ kanji.kanji }}</a></div>
                     <div><p>{{ kanji.kanji.english }}</p></div>
                     <div><p>{{ kanji.times_correct_english }}/{{ kanji.times_answered_english }}</p></div>
                     <div><p>{{ kanji.times_correct_kunyomi }}/{{ kanji.times_answered_kunyomi }}</p></div>
