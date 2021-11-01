@@ -19,16 +19,14 @@ def answer(request):
     user = request.user
     quiz_type = request.GET.get('quiz')
     print(quiz_type)
+    userkanji_list = UserKanji.objects.filter(user=user)
     if quiz_type == 'kunyomi':
-        userkanji_list = UserKanji.objects.filter(user=user).annotate(correct_percent=F('times_correct_kunyomi')*100/F('times_answered_kunyomi')*100).order_by(F('correct_percent').asc())[:20]
-        kanji_list = Kanji.objects.filter(userkanji__in=userkanji_list).exclude(kunyomi__exact='くんよみ')
+        kanji_list = Kanji.objects.filter(userkanji__in=userkanji_list).exclude(kunyomi__exact='くんよみ').annotate(correct_percent=Case(When(userkanji__times_answered_kunyomi=0, then=0),default=(F('userkanji__times_correct_kunyomi')*100/F('userkanji__times_answered_kunyomi')*100))).order_by(F('correct_percent').asc())[:20]
     elif quiz_type == 'onyomi':
-        userkanji_list = UserKanji.objects.filter(user=user).annotate(correct_percent=F('times_correct_onyomi')*100/F('times_answered_onyomi')*100).order_by(F('correct_percent').asc())[:20]
-        kanji_list = Kanji.objects.filter(userkanji__in=userkanji_list).exclude(onyomi__exact='オンヨミ')
+        kanji_list = Kanji.objects.filter(userkanji__in=userkanji_list).exclude(onyomi__exact='オンヨミ').annotate(correct_percent=Case(When(userkanji__times_answered_onyomi=0, then=0),default=(F('userkanji__times_correct_onyomi')*100/F('userkanji__times_answered_onyomi')*100))).order_by(F('correct_percent').asc())[:20]
     else:
         quiz_type = 'default'
-        userkanji_list = UserKanji.objects.filter(user=user).annotate(correct_percent=F('times_correct_english')*100/F('times_answered_english')*100).order_by(F('correct_percent').asc())[:20]
-        kanji_list = Kanji.objects.filter(userkanji__in=userkanji_list)
+        kanji_list = Kanji.objects.filter(userkanji__in=userkanji_list).annotate(correct_percent=Case(When(userkanji__times_answered_english=0, then=0),default=(F('userkanji__times_correct_english')*100/F('userkanji__times_answered_english')*100))).order_by(F('correct_percent').asc())[:20]
     
     return render(request, 'quiz/answer.html', {'type': quiz_type, 'kanji_list': kanji_list, 'kanji_list_json': json.dumps(list(kanji_list.values()), cls=DjangoJSONEncoder)})
 
