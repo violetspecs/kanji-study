@@ -51,7 +51,7 @@ def register(request):
         kanji = Kanji(kanji=kanji_json['character'], english=english, onyomi=onyomi, kunyomi=kunyomi)
         kanji.save()
         for user in users:
-            userkanji = UserKanji(user=user, kanji=kanji, times_correct=0, times_answered=0)
+            userkanji = UserKanji(user=user, kanji=kanji)
             userkanji.save()
 
     return HttpResponse("Successfully added " + str(len(kanji_list)) + " kanji")
@@ -71,23 +71,33 @@ def result(request):
         kanji = Kanji.objects.get(id=answer)
         print(kanji)
         userkanji = UserKanji.objects.get(user=user, kanji=kanji)
-        userkanji.times_correct = userkanji.times_correct + 1
-        userkanji.times_answered = userkanji.times_answered + 1
+        if quiz_type == "kunyomi":
+            userkanji.times_correct_kunyomi = userkanji.times_correct_kunyomi + 1
+            userkanji.times_answered_kunyomi = userkanji.times_answered_kunyomi + 1
+        elif quiz_type == "onyomi":
+            userkanji.times_correct_onyomi = userkanji.times_correct_onyomi + 1
+            userkanji.times_answered_onyomi = userkanji.times_answered_onyomi + 1
+        else:
+            userkanji.times_correct_english = userkanji.times_correct_english + 1
+            userkanji.times_answered_english = userkanji.times_answered_english + 1
+        
         userkanji.save()
 
     for answer in wrong_answers:
         kanji = Kanji.objects.get(id=answer)
         print(kanji)
         userkanji = UserKanji.objects.get(user=user, kanji=kanji)
-        userkanji.times_answered = userkanji.times_answered + 1
+        if quiz_type == "kunyomi":
+            userkanji.times_answered_kunyomi = userkanji.times_answered_kunyomi + 1
+        elif quiz_type == "onyomi":
+            userkanji.times_answered_onyomi = userkanji.times_answered_onyomi + 1
+        else:
+            userkanji.times_answered_english = userkanji.times_answered_english + 1
+            
         userkanji.save()
 
     total_correct = len(correct_answers)
     total_answered = len(correct_answers) + len(wrong_answers)
     results = Kanji.objects.filter(id__in = wrong_answers)
-
-    isKunyomi = False
-    if quiz_type == 'kunyomi':
-        isKunyomi = True
     
     return render(request, 'quiz/result.html', {'type': quiz_type, 'kanji_list': results, 'kanji_list_json': json.dumps(list(results.values()), cls=DjangoJSONEncoder), 'total_correct': total_correct, 'total_answered': total_answered})

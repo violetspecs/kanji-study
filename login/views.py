@@ -33,7 +33,7 @@ def signupuser(request):
     if user is not None:
         kanji_list = Kanji.objects.all()
         for kanji in kanji_list:
-            userkanji = UserKanji(user=user, kanji=kanji, times_correct=0, times_answered=0)
+            userkanji = UserKanji(user=user, kanji=kanji)
             userkanji.save()
         return HttpResponseRedirect(reverse('quiz:index'))
     else:
