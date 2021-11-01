@@ -21,4 +21,4 @@ class UserKanji(models.Model):
     times_answered_kunyomi = models.IntegerField(default = 0)
 
     def __str__(self):
-        return self.user.username + " for " + self.kanji.kanji + ": " + str(self.times_correct) + " out of " + str(self.times_answered)
+        return self.user.username + " for " + self.kanji.kanji + ": " + str(self.times_correct_english) + " out of " + str(self.times_answered_english)
