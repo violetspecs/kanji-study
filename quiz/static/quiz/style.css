@@ -126,3 +126,7 @@ button {
 .kanji-list .kanji-list-row:nth-child(2n) {
     background-color: #AEF6C7;
 }
+
+.kanji-list-row > div {
+    padding: 0px 10px 0px 10px;
+}
