@@ -9,13 +9,13 @@ let wrongAnswers = [];
 // Step 1: Randomize kanji list for display in quiz
 let kanjiListForQuiz = shuffleArray(kanjiList.map(x => x));
 
-console.log(kanjiListForQuiz);
+//LOG: console.log(kanjiListForQuiz);
 let currentIndex = 0;
 let score = 0;
 // Step 2: Get choices for display
 let choices = getChoices(currentIndex);
 
-console.log(choices);
+//LOG: console.log(choices);
 
 // Step 3: Update kanji, choices, and current item being answered for display
 updateDisplay(choices);
@@ -38,13 +38,13 @@ function getChoices(index) {
 
 function getQuestion(selectedAnswer) {
     if (currentIndex < kanjiList.length) {
-        console.log("get next question");
+        //LOG: console.log("get next question");
     kanjianswer = kanjiList.filter(kanji => {
         if (kanji.id == selectedAnswer) {
             return kanji;
         }
     });
-    console.log(kanjianswer);
+    //LOG: console.log(kanjianswer);
 
     // Check if answer was correct and add score if correct, and add to correct answers list
     if (kanjianswer[0].id == kanjiListForQuiz[currentIndex].id) {
@@ -56,7 +56,7 @@ function getQuestion(selectedAnswer) {
     }
 
     if (currentIndex >= kanjiList.length - 1) {
-        console.log("No more questions");
+        //LOG:console.log("No more questions");
 
         // Send form to server
         document.getElementById('correctAnswers').value = correctAnswers.join(' ');
