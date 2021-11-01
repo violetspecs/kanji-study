@@ -13,8 +13,12 @@ class Kanji(models.Model):
 class UserKanji(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     kanji = models.ForeignKey(Kanji, on_delete=models.CASCADE)
-    times_correct = models.IntegerField()
-    times_answered = models.IntegerField()
+    times_correct_english = models.IntegerField(default = 0)
+    times_answered_english = models.IntegerField(default = 0)
+    times_correct_onyomi = models.IntegerField(default = 0)
+    times_answered_onyomi = models.IntegerField(default = 0)
+    times_correct_kunyomi = models.IntegerField(default = 0)
+    times_answered_kunyomi = models.IntegerField(default = 0)
 
     def __str__(self):
         return self.user.username + " for " + self.kanji.kanji + ": " + str(self.times_correct) + " out of " + str(self.times_answered)

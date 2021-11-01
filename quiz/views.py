@@ -18,14 +18,16 @@ def index(request):
 def answer(request):
     user = request.user
     quiz_type = request.GET.get('quiz')
-    userkanji_list = UserKanji.objects.filter(user=user).annotate(correct_percent=Case(When(times_answered=0, then=0),default=(F('times_correct')*100/F('times_answered')*100))).order_by(F('correct_percent').asc())
 
     if quiz_type == 'kunyomi':
+        userkanji_list = UserKanji.objects.filter(user=user).annotate(correct_percent=Case(When(times_answered_kunyomi=0, then=0),default=(F('times_correct_kunyomi')*100/F('times_answered_kunyomi')*100))).order_by(F('correct_percent').asc())
         kanji_list = Kanji.objects.filter(userkanji__in=userkanji_list).exclude(kunyomi__exact='くんよみ')[:20]
     elif quiz_type == 'onyomi':
+        userkanji_list = UserKanji.objects.filter(user=user).annotate(correct_percent=Case(When(times_answered_onyomi=0, then=0),default=(F('times_correct_onyomi')*100/F('times_answered_onyomi')*100))).order_by(F('correct_percent').asc())
         kanji_list = Kanji.objects.filter(userkanji__in=userkanji_list).exclude(onyomi__exact='オンヨミ')[:20]
     else:
         quiz_type = 'default'
+        userkanji_list = UserKanji.objects.filter(user=user).annotate(correct_percent=Case(When(times_answered_english=0, then=0),default=(F('times_correct_english')*100/F('times_answered_english')*100))).order_by(F('correct_percent').asc())
         kanji_list = Kanji.objects.filter(userkanji__in=userkanji_list)[:20]
     
     return render(request, 'quiz/answer.html', {'type': quiz_type, 'kanji_list': kanji_list, 'kanji_list_json': json.dumps(list(kanji_list.values()), cls=DjangoJSONEncoder)})
