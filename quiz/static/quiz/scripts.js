@@ -76,6 +76,21 @@ function getQuestion(selectedAnswer) {
 
 function updateDisplay (choices) {
     document.getElementById('kanji').innerText = kanjiListForQuiz[currentIndex].kanji;
+    if (quizType == 'kunyomi' || quizType == 'onyomi') {
+        document.getElementById('hint-one').innerText = kanjiListForQuiz[currentIndex].english;
+        document.getElementById('hint-two').innerText = "";
+    } else {
+        if (kanjiListForQuiz[currentIndex].kunyomi != "くんよみ") {
+            document.getElementById('hint-one').innerText = kanjiListForQuiz[currentIndex].kunyomi;
+        } else {
+            document.getElementById('hint-one').innerText = ""
+        }
+        if (kanjiListForQuiz[currentIndex].onyomi != "オンヨミ") {
+            document.getElementById('hint-two').innerText = kanjiListForQuiz[currentIndex].onyomi;
+        } else {
+            document.getElementById('hint-two').innerText = ""
+        }
+    }
     for (var i = 0; i < 4; i++) {
         let choice = choices[i].english
         if (quizType == 'kunyomi') {
