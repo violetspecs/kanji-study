@@ -101,6 +101,6 @@ def result(request):
 
 @login_required(login_url='/login/')
 def kanjilist(request):
-    userkanji_list = UserKanji.objects.filter(user=request.user)
+    userkanji_list = UserKanji.objects.filter(user=request.user).order_by('id')
 
     return render(request, 'quiz/kanjilist.html', {'kanji_list': userkanji_list})
