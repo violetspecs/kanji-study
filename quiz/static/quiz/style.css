@@ -130,6 +130,7 @@ button {
 
     .kanji-display {
         font-size: 2.5em;
+        margin-top: 2rem;
     }
 
     .kanji-char {
