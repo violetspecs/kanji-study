@@ -14,19 +14,19 @@
             <a href="{% url 'quiz:index' %}">Go back to quiz selection</a>
             <div class="kanji-list">
                 <div class="kanji-list-row">
-                    <div><p>Kanji</p></div>
-                    <div><p>Meaning</p></div>
-                    <div><p>English score</p></div>
-                    <div><p>Kunyomi score</p></div>
-                    <div><p>Onyomi score</p></div>
+                    <div>Kanji</div>
+                    <div>Meaning</div>
+                    <div>English</div>
+                    <div>Kunyomi</div>
+                    <div>Onyomi</div>
                 </div>
                 {% for kanji in kanji_list %}
                 <div class = "kanji-list-row">
                     <div><a class="kanji-list-kanji" href="https://jisho.org/search/{{ kanji.kanji }}%20%23kanji" target="new">{{ kanji.kanji }}</a></div>
-                    <div><p>{{ kanji.kanji.english }}</p></div>
-                    <div><p>{{ kanji.times_correct_english }}/{{ kanji.times_answered_english }}</p></div>
-                    <div><p>{{ kanji.times_correct_kunyomi }}/{{ kanji.times_answered_kunyomi }}</p></div>
-                    <div><p>{{ kanji.times_correct_onyomi }}/{{ kanji.times_answered_onyomi }}</p></div>
+                    <div>{{ kanji.kanji.english }}</div>
+                    <div>{{ kanji.times_correct_english }}/{{ kanji.times_answered_english }}</div>
+                    <div>{{ kanji.times_correct_kunyomi }}/{{ kanji.times_answered_kunyomi }}</div>
+                    <div>{{ kanji.times_correct_onyomi }}/{{ kanji.times_answered_onyomi }}</div>
                 </div>
                 {% endfor %}
             </div>

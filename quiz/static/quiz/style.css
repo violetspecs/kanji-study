@@ -66,6 +66,35 @@ button {
     font-size: 3rem;
 }
 
+.kanji-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.kanji-list-row {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    align-items: center;
+    width: 100%;
+}
+
+.kanji-list .kanji-list-row:nth-child(2n) {
+    background-color: #AEF6C7;
+}
+
+.kanji-list-row > div {
+    padding: 0px 10px 0px 10px;
+    font-size: 2rem;
+}
+
+.kanji-list-kanji {
+    font-size: 2.5rem;
+    text-decoration: none;
+}
+
 @media (min-width: 1024px) {
     h1 {
         font-size: 2rem;
@@ -106,32 +135,12 @@ button {
     h2 {
         font-size: 2rem;
     }
-}
 
-.kanji-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 700px;
-}
+    .kanji-list {
+        width: 700px;
+    }
 
-.kanji-list-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
-    align-items: center;
-    width: 100%;
-}
-
-.kanji-list .kanji-list-row:nth-child(2n) {
-    background-color: #AEF6C7;
-}
-
-.kanji-list-row > div {
-    padding: 0px 10px 0px 10px;
-}
-
-.kanji-list-kanji {
-    font-size: 2.5rem;
-    text-decoration: none;
+    .kanji-list-row > div {
+        font-size: 1rem;
+    }
 }
