@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: 'Klee One', cursive;
+    font-family: 'Klee One', serif;
     background-color: #364958;
     color: white;
 }
@@ -23,12 +23,11 @@ body {
     width: 100%;
 }
 .option-button {
-    font-size: 4rem;
     margin: 10px 0px 10px 0px;
     width: 100%;
-    padding: 20px;
     display: block;
-    height: 10rem;
+    min-height: 10rem;
+    text-size-adjust: 80%;
 }
 
 .kanji-display {
@@ -71,13 +70,14 @@ p {
 }
 
 button {
-    height: 8rem;
+    min-height: 8rem;
     font-size: 4rem;
-    font-family: 'Klee One', cursive;
+    font-family: 'Klee One', Serif;
     border-radius: 20px;
     box-shadow: none;
     background-color: #55828B;
     color: white;
+    padding: 10px;
 }
 
 .kanji-list {
@@ -85,6 +85,7 @@ button {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    text-size-adjust: 80%;
 }
 
 .kanji-list-row {
@@ -96,7 +97,7 @@ button {
 }
 
 .kanji-list .kanji-list-row:nth-child(2n) {
-    background-color: #AEF6C7;
+    background-color: #55828B;
 }
 
 .kanji-list-row > div {
@@ -111,6 +112,7 @@ button {
 
 .hint {
     font-size: 3rem;
+    text-size-adjust: 80%;
 }
 
 @media (min-width: 1024px) {
@@ -127,7 +129,7 @@ button {
     }
     
     button {
-        height: 3rem;
+        min-height: 2rem;
         font-size: 1rem;
     }
 
@@ -137,9 +139,10 @@ button {
 
     .option-button {
         margin: 10px;
-        font-size: 1.5rem;
-        height: 4rem;
+        font-size: 1rem;
+        min-height: 4rem;
         padding: 0px;
+        font-size-adjust: none;
     }
 
     .kanji-display {
