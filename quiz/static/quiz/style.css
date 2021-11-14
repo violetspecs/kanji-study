@@ -1,6 +1,13 @@
+@font-face {
+    font-family: 'Klee One';
+    src: local('Klee One'),
+         url('../fonts/KleeOne-Regular.ttf') format("truetype");
+}
+
 body {
-    font-family: 'Noto Sans JP', sans-serif;
+    font-family: 'Klee One', cursive;
     background-color: #364958;
+    color: white;
 }
 
 .container {
@@ -56,6 +63,7 @@ h2 {
 
 a {
     font-size: 4rem;
+    color: white;
 }
 
 p {
@@ -65,7 +73,11 @@ p {
 button {
     height: 8rem;
     font-size: 4rem;
-    border-radius: 5px;
+    font-family: 'Klee One', cursive;
+    border-radius: 20px;
+    box-shadow: none;
+    background-color: #55828B;
+    color: white;
 }
 
 .kanji-list {

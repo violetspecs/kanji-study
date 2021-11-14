@@ -1,3 +1,9 @@
+@font-face {
+    font-family: 'Klee One';
+    src: local('Klee One'),
+         url('../fonts/KleeOne-Regular.ttf') format("truetype");
+}
+
 body {
     font-family: 'Klee One', cursive;
     background-color: #364958;

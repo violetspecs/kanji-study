@@ -3,9 +3,6 @@
         <title>Kanji Quiz</title>
         {% load static %}
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{% static 'quiz/style.css' %}">
     </head>
     <body>
@@ -46,7 +43,7 @@
                 <button>Retry</button>
             </form>
             {% endif %}
-            <a href="{% url 'quiz:index' %}">Select another quiz</a>
+            <a href="{% url 'quiz:index' %}">Try another quiz</a>
             <form action="{% url 'login:logoutuser' %}" method="post">
                 {% csrf_token %}
                 <button>Log out</button>
