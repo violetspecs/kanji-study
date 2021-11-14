@@ -5,8 +5,9 @@
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Klee+One&family=Noto+Sans+JP&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{% static 'login/style.css' %}">
+        <script src="{% static 'fontawesome_free/js/all.min.js' %}"></script>
     </head>
     <body>
         <div class="container">
@@ -15,12 +16,12 @@
                 <form action="{% url 'login:loginuser' %}" method="post">
                     {% csrf_token %}
                     <div class="form-group">
-                        <label for="username">Username</label>
-                        <input id="username" name="username" type="text" required />
+                        <input id="username" name="username" type="text" placeholder="Username" required></input>
+                        <div class="icon"><i class="far fa-user"></i></div>
                     </div>
                     <div class="form-group">
-                        <label for="password">Password</label>
-                        <input id="password" name="password" type="password" required />
+                        <input id="password" name="password" type="password" placeholder="Password" required />
+                        <div class="icon"><i class="fas fa-lock"></i></div>
                     </div>
                     <div class="form-group">
                         <button>Login</button>

@@ -1,9 +1,11 @@
 body {
-    font-family: 'Noto Sans JP', sans-serif;
+    font-family: 'Klee One', cursive;
+    background-color: #364958;
+    color: white;
+    margin: 0px;
 }
 
 h1 {
-    color: #212922;
     font-size: 6rem;
 }
 
@@ -11,17 +13,12 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 5rem;
 }
 
 .login-form {
     width: 100%;
     min-height: 60vh;
-}
-
-.login-form {
-    box-shadow: 0px 0px 10px #69626D;
-    border-radius: 5px;
-    background-color: #AEF6C7;
     padding: 0px 30px 30px 30px;
 }
 
@@ -38,17 +35,54 @@ label {
 input {
     height: 6rem;
     font-size: 3rem;
+    background: transparent;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: groove;
+    border-bottom: 1px solid white;
+    color: white;
+    box-shadow: none;
+    padding-left: 100px;
+    font-family: 'Klee One', cursive;
+}
+
+input:focus {
+    outline: none;
+}
+
+input::placeholder {
+    color: white;
+}
+
+.icon {
+    position: relative;
+    top: -80px;
+    left: 10px;
+    width: 0px;
+    font-size: 3rem;
+}
+.icon i {
+    position: absolute;
 }
 
 button {
     height: 8rem;
     font-size: 4rem;
-    border-radius: 5px;
-    background-color: white;
+    border-radius: 20px;
+    box-shadow: none;
+    background-color: #55828B;
+    color: white;
+    font-family: 'Klee One', cursive;
 }
 
 a {
     font-size: 4rem;
+    color: white;
+    text-decoration: none;
 }
 
 @media (min-width: 1024px) {
@@ -74,6 +108,13 @@ a {
     }
     a {
         font-size: 1rem;
+    }
+    .icon {
+        font-size: 1rem;
+        top: -30px;
+    }
+    input {
+        padding-left: 2.5rem;
     }
 }
 
