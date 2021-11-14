@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: 'Klee One', cursive;
+    font-family: 'Klee One', serif;
     background-color: #364958;
     color: white;
     margin: 0px;
@@ -53,7 +53,7 @@ input {
     color: white;
     box-shadow: none;
     padding-left: 100px;
-    font-family: 'Klee One', cursive;
+    font-family: 'Klee One', serif;
 }
 
 input:focus {
@@ -82,7 +82,7 @@ button {
     box-shadow: none;
     background-color: #55828B;
     color: white;
-    font-family: 'Klee One', cursive;
+    font-family: 'Klee One', serif;
 }
 
 a {
