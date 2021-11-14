@@ -122,7 +122,7 @@ button {
     }
     
     a {
-        font-size: 1rem;
+        font-size: 1.2rem;
     }
     
     p {
@@ -140,7 +140,7 @@ button {
 
     .option-button {
         margin: 10px;
-        font-size: 1rem;
+        font-size: 1.2rem;
         min-height: 4rem;
         padding: 0px;
         font-size-adjust: none;
