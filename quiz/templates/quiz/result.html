@@ -6,6 +6,8 @@
         <link rel="stylesheet" type="text/css" href="{% static 'quiz/style.css' %}">
     </head>
     <body>
+        {% include "./header.html" %}
+
         <div class="container">
             <h1>Results</h1>
                 <h2>Score: {{ total_correct }}/{{ total_answered}}</h2>
@@ -44,10 +46,6 @@
             </form>
             {% endif %}
             <a href="{% url 'quiz:index' %}">Try another quiz</a>
-            <form action="{% url 'login:logoutuser' %}" method="post">
-                {% csrf_token %}
-                <button>Log out</button>
-            </form>
         </div>
         
     </body>

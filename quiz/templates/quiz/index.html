@@ -6,18 +6,12 @@
         <link rel="stylesheet" type="text/css" href="{% static 'quiz/style.css' %}">
     </head>
     <body>
+        {% include "./header.html" %}
         <div class="container">
             <h1>Quiz</h1>
             <a href="{% url 'quiz:answer' %}?quiz=english">English</a>
             <a href="{% url 'quiz:answer' %}?quiz=kunyomi">Kunyomi</a>
             <a href="{% url 'quiz:answer' %}?quiz=onyomi">Onyomi</a>
-            <p>OR</p>
-            <a href="{% url 'quiz:kanjilist' %}">View kanji list</a>
-            <p>OR</p>
-            <form action="{% url 'login:logoutuser' %}" method="post">
-                {% csrf_token %}
-                <button>Log out</button>
-            </form>
         </div>
         
     </body>

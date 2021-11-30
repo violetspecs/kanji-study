@@ -1,0 +1,7 @@
+<div class="header">
+    <button><a class="button-link" href="{% url 'quiz:kanjilist' %}">View kanji list</a></button>
+    <form class="login-form" action="{% url 'login:logoutuser' %}" method="post">
+        {% csrf_token %}
+        <button>Log out</button>
+    </form>
+</div>

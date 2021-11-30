@@ -6,6 +6,8 @@
         <link rel="stylesheet" type="text/css" href="{% static 'quiz/style.css' %}">
     </head>
     <body>
+        {% include "./header.html" %}
+        
         <div class="container">
             <h1>Kanji</h1>
             <a href="{% url 'quiz:index' %}">Go back to quiz selection</a>

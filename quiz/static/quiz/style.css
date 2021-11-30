@@ -65,6 +65,10 @@ a {
     color: white;
 }
 
+.button-link {
+    font-size: 4rem;
+}
+
 p {
     font-size: 4rem;
     text-size-adjust: 80%;
@@ -116,6 +120,13 @@ button {
     text-size-adjust: 80%;
 }
 
+.header {
+    display: flex;
+    border-bottom: 1px solid;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
 @media (min-width: 1024px) {
     h1 {
         font-size: 2rem;
@@ -123,6 +134,10 @@ button {
     
     a {
         font-size: 1.2rem;
+    }
+
+    .button-link {
+        font-size: 1rem;
     }
     
     p {
@@ -169,5 +184,9 @@ button {
 
     .hint {
         font-size: 1rem;
+    }
+
+    .header {
+        justify-content: flex-end;
     }
 }
